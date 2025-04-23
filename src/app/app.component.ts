@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertifyService, MessageType, Position } from './services/admin/alertify.service';
-declare var $:any;
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from './services/ui/custom-toastr.service';
+declare var $:any;//jquery
 
 
 @Component({
@@ -12,10 +13,14 @@ export class AppComponent implements OnInit {
 
   title = 'ETicaretClient';
 
-  constructor(private alertify:AlertifyService){}
+  constructor(private alertify:AlertifyService,private toastr:CustomToastrService){}
 
   ngOnInit(): void {
-    this.alertify.message("Hello World!",{messageType:MessageType.Warning,position:Position.BottomCenter,delay:5})
+    this.toastr.message("Merhaba","Toastr",{messageType:ToastrMessageType.Success,position:ToastrPosition.TopCenter})
+    this.toastr.message("Merhaba","Toastr",{messageType:ToastrMessageType.Error,position:ToastrPosition.TopCenter})
+    this.toastr.message("Merhaba","Toastr",{messageType:ToastrMessageType.Info,position:ToastrPosition.TopCenter})
+    this.toastr.message("Merhaba","Toastr",{messageType:ToastrMessageType.Warning,position:ToastrPosition.TopCenter})
+   // this.alertify.message("Hello World!",{messageType:MessageType.Error,position:Position.BottomCenter,delay:5})
   }
   
 
