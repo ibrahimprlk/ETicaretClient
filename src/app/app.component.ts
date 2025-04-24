@@ -3,7 +3,6 @@ import { AlertifyService, MessageType, Position } from './services/admin/alertif
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from './services/ui/custom-toastr.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpClientService } from './services/common/http-client.service';
-import { Product } from './contracts/product';
 declare var $:any;//jquery
 
 
@@ -20,7 +19,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.httpClientService.get<Product[]>({controller:"products"}).subscribe(data=>{
+    this.httpClientService.get({controller:"products"}).subscribe(data=>{
       console.log(data);      
     });
 
