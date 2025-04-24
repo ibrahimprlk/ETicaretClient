@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertifyService, MessageType, Position } from './services/admin/alertify.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from './services/ui/custom-toastr.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var $:any;//jquery
 
 
@@ -13,14 +14,15 @@ export class AppComponent implements OnInit {
 
   title = 'ETicaretClient';
 
-  constructor(private alertify:AlertifyService,private toastr:CustomToastrService){}
+  constructor(private spinner: NgxSpinnerService){}
 
   ngOnInit(): void {
-    this.toastr.message("Merhaba","Toastr",{messageType:ToastrMessageType.Success,position:ToastrPosition.TopCenter})
-    this.toastr.message("Merhaba","Toastr",{messageType:ToastrMessageType.Error,position:ToastrPosition.TopCenter})
-    this.toastr.message("Merhaba","Toastr",{messageType:ToastrMessageType.Info,position:ToastrPosition.TopCenter})
-    this.toastr.message("Merhaba","Toastr",{messageType:ToastrMessageType.Warning,position:ToastrPosition.TopCenter})
-   // this.alertify.message("Hello World!",{messageType:MessageType.Error,position:Position.BottomCenter,delay:5})
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 5000);
   }
   
 
