@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ProductService } from '../../../../services/common/model/product.service';
 import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
 import { MatPaginator } from '@angular/material/paginator';
+declare var $: any;
 
 @Component({
   selector: 'app-list',
@@ -18,7 +19,7 @@ export class ListComponent extends BaseComponent implements OnInit {
     super(spiner)
   }
 
-  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate'];
+  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate','edit','delete'];
   dataSource: MatTableDataSource<List_Product> = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
  
@@ -41,6 +42,10 @@ export class ListComponent extends BaseComponent implements OnInit {
     await this.getProducts();
   }
 
+  delete(id, event) {
+    const img: HTMLImageElement = event.srcElement;
+    $(img.parentElement.parentElement).fadeOut(2000);
+  }
  
 
 }
