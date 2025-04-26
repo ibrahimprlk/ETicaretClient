@@ -4,6 +4,7 @@ import { ProductsModule } from './products/products.module';
 import { CustomersModule } from './customers/customers.module';
 import { OrdersModule } from './orders/orders.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { FileUploadModule } from '../../services/common/file-upload/file-upload.module';
 
 
 
@@ -14,7 +15,11 @@ import { DashboardModule } from './dashboard/dashboard.module';
     ProductsModule,
     CustomersModule,
     OrdersModule,
-    DashboardModule
+    DashboardModule,
+    FileUploadModule
+  ],
+  exports:[
+    FileUploadModule
   ]
 })
 export class ComponentsModule { }
