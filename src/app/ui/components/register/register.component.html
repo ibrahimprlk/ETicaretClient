@@ -5,23 +5,23 @@
 
       <!-- Ad Soyad -->
       <div class="form-group mb-3">
-        <label for="adSoyad">Ad Soyad</label>
-        <input type="text" id="adSoyad" class="form-control" formControlName="adSoyad"
-               [ngClass]="{'is-invalid': submitted && component['adSoyad']?.invalid}" placeholder="Ad Soyad">
-        <div class="invalid-feedback" *ngIf="submitted && component['adSoyad']?.errors?.['required']">
+        <label for="nameSurname">Ad Soyad</label>
+        <input type="text" id="nameSurname" class="form-control" formControlName="nameSurname"
+               [ngClass]="{'is-invalid': submitted && component['nameSurname']?.invalid}" placeholder="Ad Soyad">
+        <div class="invalid-feedback" *ngIf="submitted && component['nameSurname']?.errors?.['required']">
           Lütfen ad soyadı giriniz.
         </div>
-        <div class="invalid-feedback" *ngIf="submitted && (component['adSoyad']?.errors?.['minlength'] || component['adSoyad']?.errors?.['maxlength'])">
+        <div class="invalid-feedback" *ngIf="submitted && (component['nameSurname']?.errors?.['minlength'] || component['nameSurname']?.errors?.['maxlength'])">
           Ad soyad 3 ile 50 karakter arasında olmalıdır.
         </div>
       </div>
 
       <!-- Kullanıcı Adı -->
       <div class="form-group mb-3">
-        <label for="kullaniciAdi">Kullanıcı Adı</label>
-        <input type="text" id="kullaniciAdi" class="form-control" formControlName="kullaniciAdi"
-               [ngClass]="{'is-invalid': submitted && component['kullaniciAdi']?.invalid}" placeholder="Kullanıcı Adı">
-        <div class="invalid-feedback" *ngIf="submitted && component['kullaniciAdi']?.errors?.['required']">
+        <label for="username">Kullanıcı Adı</label>
+        <input type="text" id="username" class="form-control" formControlName="username"
+               [ngClass]="{'is-invalid': submitted && component['username']?.invalid}" placeholder="Kullanıcı Adı">
+        <div class="invalid-feedback" *ngIf="submitted && component['username']?.errors?.['required']">
           Kullanıcı adı zorunludur.
         </div>
       </div>
@@ -41,21 +41,21 @@
 
       <!-- Şifre -->
       <div class="form-group mb-3">
-        <label for="sifre">Şifre</label>
-        <input type="password" id="sifre" class="form-control" formControlName="sifre"
-               [ngClass]="{'is-invalid': submitted && component['sifre']?.invalid}" placeholder="Şifre">
-        <div class="invalid-feedback" *ngIf="submitted && component['sifre']?.errors?.['required']">
+        <label for="password">Şifre</label>
+        <input type="password" id="password" class="form-control" formControlName="password"
+               [ngClass]="{'is-invalid': submitted && component['password']?.invalid}" placeholder="Şifre">
+        <div class="invalid-feedback" *ngIf="submitted && component['password']?.errors?.['required']">
           Şifre gereklidir.
         </div>
       </div>
 
       <!-- Şifre Tekrar -->
       <div class="form-group mb-3">
-        <label for="sifreTekrar">Şifre Tekrar</label>
-        <input type="password" id="sifreTekrar" class="form-control" formControlName="sifreTekrar"
-               [ngClass]="{'is-invalid': submitted && (component['sifreTekrar']?.invalid || frm?.errors?.['notSame'])}"
+        <label for="passwordConfirm">Şifre Tekrar</label>
+        <input type="password" id="passwordConfirm" class="form-control" formControlName="passwordConfirm"
+               [ngClass]="{'is-invalid': submitted && (component['passwordConfirm']?.invalid || frm?.errors?.['notSame'])}"
                placeholder="Şifre Tekrar">
-        <div class="invalid-feedback" *ngIf="submitted && component['sifreTekrar']?.errors?.['required']">
+        <div class="invalid-feedback" *ngIf="submitted && component['passwordConfirm']?.errors?.['required']">
           Şifre tekrar zorunludur.
         </div>
         <div class="invalid-feedback" *ngIf="submitted && frm?.errors?.['notSame']">
