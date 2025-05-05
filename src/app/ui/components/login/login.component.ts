@@ -8,6 +8,7 @@ import { FacebookLoginProvider, SocialAuthService, SocialUser } from '@abacritt/
  import { AuthService } from '../../../services/common/auth.service';
  import { HttpClientService } from '../../../services/common/http-client.service';
 import { UserService } from '../../../services/common/model/user.service';
+import { UserAuthService } from '../../../services/common/model/user-auth.service';
  
  @Component({
    selector: 'app-login',
@@ -16,20 +17,20 @@ import { UserService } from '../../../services/common/model/user.service';
  })
  export class LoginComponent extends BaseComponent implements OnInit {
  
-  constructor(private userService: UserService, spinner: NgxSpinnerService, private authService: AuthService, private activatedRoute: ActivatedRoute, private router: Router, private socialAuthService: SocialAuthService) {
+  constructor(private userAuthService: UserAuthService, spinner: NgxSpinnerService, private authService: AuthService, private activatedRoute: ActivatedRoute, private router: Router, private socialAuthService: SocialAuthService) {
     super(spinner)
     socialAuthService.authState.subscribe(async (user: SocialUser) => {
       console.log(user)
       this.showSpinner(SpinnerType.BallAtom);
       switch (user.provider) {
         case "GOOGLE":
-          await userService.googleLogin(user, () => {
+          await userAuthService.googleLogin(user, () => {
             this.authService.identityCheck();
             this.hideSpinner(SpinnerType.BallAtom);
           })
           break;
         case "FACEBOOK":
-          await userService.facebookLogin(user, () => {
+          await userAuthService.facebookLogin(user, () => {
             this.authService.identityCheck();
             this.hideSpinner(SpinnerType.BallAtom);
           })
@@ -43,7 +44,7 @@ import { UserService } from '../../../services/common/model/user.service';
 
   async login(usernameOrEmail: string, password: string) {
     this.showSpinner(SpinnerType.BallAtom);
-    await this.userService.login(usernameOrEmail, password, () => {
+    await this.userAuthService.login(usernameOrEmail, password, () => {
       this.authService.identityCheck();
 
       this.activatedRoute.queryParams.subscribe(params => {
